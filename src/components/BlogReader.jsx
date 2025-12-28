@@ -13,13 +13,20 @@ const BlogReader = () => {
     const [post, setPost] = useState(null);
 
     useEffect(() => {
+        // Toggle Reading Mode Body Class
+        document.body.classList.add('reading-mode');
+        return () => document.body.classList.remove('reading-mode');
+    }, []);
+
+    useEffect(() => {
+        // Load Data
         if (data?.blogs) {
             const found = data.blogs.find(b => b.id === id);
             if (found) setPost(found);
         }
     }, [id, data]);
 
-    if (!post) return <div style={{ color: 'white', padding: '2rem' }}>Loading Post...</div>;
+    if (!post) return <div style={{ color: 'var(--text-main)', padding: '2rem', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading...</div>;
 
     // Reading Time Calculation
     const words = post.content ? post.content.trim().split(/\s+/).length : 0;
@@ -27,9 +34,9 @@ const BlogReader = () => {
 
     return (
         <div style={{
-            background: '#050505',
+            // background: handled by body.reading-mode
             minHeight: '100vh',
-            color: '#e0e0e0',
+            color: 'var(--text-main)',
             fontFamily: 'var(--font-serif)',
             padding: '4rem 2rem'
         }}>

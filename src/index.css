@@ -19,16 +19,15 @@ body {
 
 /* READING MODE OVERRIDES */
 body.reading-mode {
-  background-color: #f4f4f4;
-  /* Paper White/Off-White */
-  color: #111;
-  /* clean black text */
-  --text-main: #111;
-  --text-muted: #444;
-  --text-dim: #666;
-  --bg-panel: rgba(0, 0, 0, 0.03);
-  /* slight darken for panels */
-  --border-subtle: #ddd;
+  background-color: #1a1918;
+  /* Dark Sepia/Coffee */
+  color: #e6e1dc;
+  /* Warm White */
+  --text-main: #e6e1dc;
+  --text-muted: #a8a095;
+  --text-dim: #736b60;
+  --bg-panel: rgba(255, 255, 255, 0.05);
+  --border-subtle: #3a3632;
 }
 
 /* Dark Mode Reader Preference? */
