@@ -8,6 +8,7 @@ import TrainingSection from './TrainingSection';
 import ThinkingSection from './ThinkingSection';
 import BlogEditor from './BlogEditor';
 import ProjectEditor from './ProjectEditor';
+import AudioPlayer from './AudioPlayer';
 
 const TOCItem = ({ id, label, active }) => (
     <a href={`#${id}`} style={{
@@ -281,6 +282,9 @@ const JournalLayout = () => {
                     <TOCItem id="references" label="08. References" active={activeId === 'references'} />
                 </nav>
 
+                {/* Custom Audio Player - Resonance */}
+                <AudioPlayer />
+
                 <div style={{ fontSize: '0.7rem', color: 'var(--text-dim)', borderTop: '1px solid var(--border-subtle)', paddingTop: '1rem' }}>
                     VOL. 2025 • ISSUE 3<br />
                     SYSTEMS SECURITY
@@ -288,7 +292,7 @@ const JournalLayout = () => {
             </aside>
 
             <main>
-                <section id="abstract" style={{ minHeight: '60vh' }}>
+                <section id="abstract" style={{ minHeight: 'auto', marginBottom: '2rem' }}>
                     <div style={{ fontSize: '0.9rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', marginBottom: '1rem' }}>ABSTRACT / INTRO</div>
                     <div style={{ fontSize: '1.5rem', fontFamily: 'var(--font-serif)', lineHeight: 1.6, color: 'var(--text-main)', marginBottom: '2rem' }}>
                         <EditableText
@@ -302,6 +306,33 @@ const JournalLayout = () => {
                         <div>{data.home.abstract.slice(3).map((p, i) => <p key={i} style={{ marginBottom: '1.2rem' }}>{p}</p>)}</div>
                     </div>
                 </section>
+
+                {/* Stylized Quote - Apple Editorial (Serif) */}
+                <div style={{
+                    margin: '4rem 0 6rem 0',
+                    padding: '0 2rem',
+                    textAlign: 'center',
+                    borderTop: '1px solid rgba(255,255,255,0.05)',
+                    borderBottom: '1px solid rgba(255,255,255,0.05)',
+                    paddingTop: '3rem',
+                    paddingBottom: '3rem'
+                }}>
+                    <blockquote style={{
+                        fontSize: '2rem',
+                        fontFamily: 'var(--font-serif)',
+                        fontWeight: 400,
+                        fontStyle: 'italic',
+                        letterSpacing: '-0.02em',
+                        color: 'var(--text-main)',
+                        lineHeight: 1.5,
+                        maxWidth: '900px',
+                        margin: '0 auto',
+                        textShadow: '0 0 30px rgba(255,255,255,0.05)'
+                    }}>
+                        "To emulate the <span style={{ color: 'var(--accent-cyber)', fontWeight: 600 }}>adversary</span> is to embody every doubt that was never tested enough."
+                    </blockquote>
+
+                </div>
 
                 <section id="research-areas">
                     <SectionHeading id="research-areas"
