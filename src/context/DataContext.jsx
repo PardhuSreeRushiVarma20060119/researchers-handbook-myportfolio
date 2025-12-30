@@ -383,6 +383,21 @@ export const DataProvider = ({ children }) => {
         });
     };
 
+    // Export Data Action
+    const exportData = () => {
+        if (!data) return;
+        const fullDb = { ...data, settings };
+        const dataStr = JSON.stringify(fullDb, null, 2);
+        const blob = new Blob([dataStr], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `portfolio_backup_${new Date().toISOString().slice(0, 10)}.json`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     // --- Reflections (What Changed My Thinking) ---
     const addReflection = (reflection) => {
         setData(prev => {
@@ -541,7 +556,9 @@ export const DataProvider = ({ children }) => {
             addReflection, deleteReflection, updateReflection,
             addIdea, deleteIdea, updateIdea, toggleIdeaVisibility,
             addPrivateNote, deletePrivateNote, updatePrivateNote,
-            addItem, addAsset, deleteAsset
+            addIdea, deleteIdea, updateIdea, toggleIdeaVisibility,
+            addPrivateNote, deletePrivateNote, updatePrivateNote,
+            addItem, addAsset, deleteAsset, exportData
         }}>
             {children}
         </DataContext.Provider>

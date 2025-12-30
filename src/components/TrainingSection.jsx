@@ -482,8 +482,8 @@ const TrainingSection = () => {
                                                                 Created {createEvents.length} repositories
                                                             </div>
                                                             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                                                                {createEvents.map(e => (
-                                                                    <div key={e.id} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(0, 0, 0, 0.4)', padding: '0.5rem', borderRadius: '6px', border: '1px solid rgba(255, 255, 255, 0.03)' }}>
+                                                                {createEvents.map((e, i) => (
+                                                                    <div key={e.id || `evt-${i}`} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(0, 0, 0, 0.4)', padding: '0.5rem', borderRadius: '6px', border: '1px solid rgba(255, 255, 255, 0.03)' }}>
                                                                         <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#d29922' }}></div> {/* Lang Color */}
                                                                         <a href={`https://github.com/${e.repo.name}`} target="_blank" rel="noreferrer" style={{ fontSize: '0.8rem', color: '#c9d1d9', textDecoration: 'none', fontWeight: 600 }}>
                                                                             {e.repo.name.split('/')[1]}

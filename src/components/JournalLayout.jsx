@@ -119,7 +119,7 @@ import SectionHeading from './SectionHeading';
 import { useNavigate } from 'react-router-dom';
 
 const JournalLayout = () => {
-    const { data, settings, updateSettings, updateField, saveBlog, deleteBlog, saveProject, deleteProject, savePaper, deletePaper, movePaper, swapPapers } = useData();
+    const { data, settings, updateSettings, updateField, saveBlog, deleteBlog, saveProject, deleteProject, savePaper, deletePaper, movePaper, swapPapers, exportData } = useData();
     const { isAdmin, adminMode } = useAuth();
     const navigate = useNavigate();
     const [activeId, setActiveId] = useState('abstract');
@@ -131,6 +131,13 @@ const JournalLayout = () => {
 
     const toggleReaderMode = () => {
         updateSettings({ ...settings, readingMode: !settings.readingMode });
+    };
+
+    // Export Handler
+    const handleExport = () => {
+        if (window.confirm("Download current database backup?")) {
+            exportData();
+        }
     };
 
     useEffect(() => {
@@ -416,19 +423,24 @@ const JournalLayout = () => {
                 <section id="selected-figures">
                     <SectionHeading id="selected-figures"
                         action={(isAdmin && adminMode) ? (
-                            <button onClick={() => {
-                                setEditingProject({
-                                    id: null,
-                                    title: "New Project",
-                                    description: "Description...",
-                                    tech: "Tech Stack",
-                                    status: "CONCEPT",
-                                    link: "#",
-                                    isNew: true // Flag to handle create vs update
-                                });
-                            }} style={{ background: 'white', color: 'black', border: 'none', padding: '0.3rem 0.8rem', cursor: 'pointer', fontSize: '0.8rem', fontWeight: 600 }}>
-                                + NEW PROJECT
-                            </button>
+                            <div style={{ display: 'flex', gap: '0.5rem' }}>
+                                <button onClick={handleExport} style={{ background: 'transparent', color: '#888', border: '1px solid #444', padding: '0.3rem 0.8rem', cursor: 'pointer', fontSize: '0.8rem' }}>
+                                    EXPORT DB
+                                </button>
+                                <button onClick={() => {
+                                    setEditingProject({
+                                        id: null,
+                                        title: "New Project",
+                                        description: "Description...",
+                                        tech: "Tech Stack",
+                                        status: "CONCEPT",
+                                        link: "#",
+                                        isNew: true // Flag to handle create vs update
+                                    });
+                                }} style={{ background: 'white', color: 'black', border: 'none', padding: '0.3rem 0.8rem', cursor: 'pointer', fontSize: '0.8rem', fontWeight: 600 }}>
+                                    + NEW PROJECT
+                                </button>
+                            </div>
                         ) : null}
                     >03. Selected Figures</SectionHeading>
 
