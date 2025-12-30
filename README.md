@@ -157,5 +157,5 @@ For a deeper dive into the system, consult the following documents:
 
 ## 📝 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-Copyright (c) 2025 PardhuVarma Konduru.
+- Copyright (c) 2025 PardhuVarma Konduru.
 

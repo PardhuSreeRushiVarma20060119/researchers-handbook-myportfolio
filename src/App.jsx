@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { DataProvider, useData } from './context/DataContext';
+import { Analytics } from '@vercel/analytics/react';
 
 import LabBackground from './components/LabBackground';
 import JournalLayout from './components/JournalLayout';
@@ -62,6 +63,7 @@ function App() {
     <AuthProvider>
       <DataProvider>
         <MainLayout />
+        <Analytics />
       </DataProvider>
     </AuthProvider>
   );
