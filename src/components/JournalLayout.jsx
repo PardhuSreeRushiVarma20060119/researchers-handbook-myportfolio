@@ -12,6 +12,8 @@ import PublicationEditor from './PublicationEditor';
 import AudioPlayer from './AudioPlayer';
 
 import PublicationCard from './PublicationCard';
+import profilePic from '../assets/profile.jpg';
+
 
 const TOCItem = ({ id, label, active }) => (
     <a href={`#${id}`} style={{
@@ -249,7 +251,8 @@ const JournalLayout = () => {
                         }}
                     >
                         <img
-                            src={settings.profileImage || "/src/assets/profile.jpg"}
+                            src={settings.profileImage || profilePic}
+
                             alt="Pardhu Varma"
                             style={{
                                 width: '100%',
